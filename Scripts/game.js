@@ -22,7 +22,8 @@ var Game = (function () {
         { id: "three", src: "./Assets/images/3.png" },
         { id: "four", src: "./Assets/images/4.png" },
         { id: "five", src: "./Assets/images/5.png" },
-        { id: "six", src: "./Assets/images/6.png" }
+        { id: "six", src: "./Assets/images/6.png" },
+        { id: "roll", src: "./Assets/audio/roll.wav" }
     ];
     function Preload() {
         assets = new createjs.LoadQueue(); // asset container
@@ -81,6 +82,10 @@ var Game = (function () {
             case scenes.State.PLAY:
                 console.log("switch to Play Scene");
                 currentScene = new scenes.Play();
+                break;
+            case scenes.State.BONUS:
+                console.log("switch to Bonus Scene");
+                currentScene = new scenes.Bonus();
                 break;
             case scenes.State.END:
                 console.log("switch to End Scene");

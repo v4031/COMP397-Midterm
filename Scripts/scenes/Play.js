@@ -28,7 +28,8 @@ var scenes;
         // PUBLIC METHODS
         //initialize and instatiate
         Play.prototype.Start = function () {
-            this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
+            this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 360, true);
+            this._nextButton = new objects.Button(config.Game.ASSETS.getResult("nextButton"), 320, 430, true);
             this._dices[0] = new objects.Dice(config.Game.ASSETS.getResult("six"), 10, 65, false);
             this._dices[1] = new objects.Dice(config.Game.ASSETS.getResult("six"), 220, 65, false);
             this._dices[2] = new objects.Dice(config.Game.ASSETS.getResult("six"), 430, 65, false);
@@ -43,6 +44,9 @@ var scenes;
             this.addChild(this._dices[1]);
             this.addChild(this._dices[2]);
             this._rollButton.on("click", this.Roll.bind(this));
+            this._nextButton.on("click", function () {
+                config.Game.SCENE = scenes.State.BONUS;
+            });
         };
         Play.prototype.Roll = function () {
             var outCome = [0, 0, 0];
@@ -50,6 +54,8 @@ var scenes;
                 outCome[spin] = Math.floor((Math.random() * 6) + 1);
                 this._dices[spin].DisplayResult(outCome[spin]);
             }
+            var rollSound = createjs.Sound.play("roll");
+            rollSound.volume = 1;
         };
         return Play;
     }(objects.Scene));

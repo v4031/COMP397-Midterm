@@ -12,7 +12,7 @@ module objects
         {
             super(image, x, y, isCentered);
 
-            this._test = new objects.Label("default", "40px", "Consolas", "#000000", this.x+100,this.y+220,false);
+            this._test = new objects.Label("default", "30px", "Consolas", "#000000", this.x+100,this.y+220,false);
 
             this.Start();
         }

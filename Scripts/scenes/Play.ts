@@ -24,7 +24,8 @@ module scenes
         public Start(): void 
         {
 
-            this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
+            this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 360, true);
+            this._nextButton = new objects.Button(config.Game.ASSETS.getResult("nextButton"), 320, 430, true);
             this._dices[0] = new objects.Dice(config.Game.ASSETS.getResult("six"),10, 65, false);
             this._dices[1] = new objects.Dice(config.Game.ASSETS.getResult("six"),220, 65, false);
             this._dices[2] = new objects.Dice(config.Game.ASSETS.getResult("six"),430, 65, false);
@@ -44,7 +45,9 @@ module scenes
             this.addChild(this._dices[1]);
             this.addChild(this._dices[2]);
             this._rollButton.on("click", this.Roll.bind(this));
-
+            this._nextButton.on("click", ()=>{
+                config.Game.SCENE = scenes.State.BONUS;
+            });
         }
 
         public Roll() {
@@ -53,6 +56,8 @@ module scenes
                 outCome[spin] = Math.floor((Math.random() * 6) + 1);
                 this._dices[spin].DisplayResult(outCome[spin]);
             }
+            let rollSound = createjs.Sound.play("roll");
+            rollSound.volume = 1;
         }
     }
 }
