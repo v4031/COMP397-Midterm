@@ -28,8 +28,8 @@ var scenes;
         // PUBLIC METHODS
         //initialize and instatiate
         Bonus.prototype.Start = function () {
-            this._title = new objects.Label("Roll 4d6", "30px", "Consolas", "Black", 320, 20, true);
-            this._result = new objects.Label("Result:", "30px", "Consolas", "Black", 320, 180, true);
+            this._title = new objects.Label("Roll 4d6", "30px", "Consolas", "White", 320, 20, true);
+            this._result = new objects.Label("Result:", "30px", "Consolas", "White", 320, 180, true);
             this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 360, true);
             this._backButton = new objects.Button(config.Game.ASSETS.getResult("backButton"), 320, 430, true);
             this._dices[0] = new objects.Dice(config.Game.ASSETS.getResult("six"), 60, 15, false);

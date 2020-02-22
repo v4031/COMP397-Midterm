@@ -25,12 +25,11 @@ var objects;
             var _this = _super.call(this, image, x, y, isCentered) || this;
             _this.scaleX = 0.75;
             _this.scaleY = 0.75;
-            _this._test = new objects.Label("default", "30px", "Consolas", "#000000", _this.x + 75, _this.y + 180, false);
+            _this._resultLabel = new objects.Label("default", "30px", "Consolas", "White", _this.x + 75, _this.y + 180, false);
             _this.Start();
             return _this;
         }
         Dice.prototype.Reset = function () {
-            this.parent.removeChild(this._test);
         };
         Dice.prototype._checkBounds = function () {
         };
@@ -40,8 +39,8 @@ var objects;
         };
         Dice.prototype.DisplayResult = function (num) {
             this.image = config.Game.DICEIMAGE[num - 1].image;
-            this._test.setText("" + num);
-            this.parent.addChild(this._test);
+            this._resultLabel.setText("" + num);
+            this.parent.addChild(this._resultLabel);
         };
         return Dice;
     }(objects.GameObject));

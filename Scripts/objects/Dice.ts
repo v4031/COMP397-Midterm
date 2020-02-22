@@ -2,9 +2,8 @@ module objects
 {
     export class Dice extends GameObject
     {
-        private _test:objects.Label;
-        public Reset(): void {
-            this.parent.removeChild(this._test);
+        private _resultLabel:objects.Label;
+        public Reset(): void { 
         }
         // constructor
         constructor(image:Object = config.Game.ASSETS.getResult("six")
@@ -13,7 +12,7 @@ module objects
             super(image, x, y, isCentered);
             this.scaleX = 0.75;
             this.scaleY = 0.75;
-            this._test = new objects.Label("default", "30px", "Consolas", "#000000", this.x + 75,this.y+180,false);
+            this._resultLabel = new objects.Label("default", "30px", "Consolas", "White", this.x + 75,this.y+180,false);
 
             this.Start();
         }
@@ -33,8 +32,8 @@ module objects
         public DisplayResult(num:number):void
         {
             this.image = config.Game.DICEIMAGE[num - 1].image;
-            this._test.setText(""+num);
-            this.parent.addChild(this._test);
+            this._resultLabel.setText(""+num);
+            this.parent.addChild(this._resultLabel);
         }
     }
 }
