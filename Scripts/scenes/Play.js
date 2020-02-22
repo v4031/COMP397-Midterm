@@ -20,6 +20,7 @@ var scenes;
         // CONSTRUCTOR
         function Play() {
             var _this = _super.call(this) || this;
+            _this._dices = [];
             _this.Start();
             return _this;
         }
@@ -28,12 +29,27 @@ var scenes;
         //initialize and instatiate
         Play.prototype.Start = function () {
             this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
+            this._dices[0] = new objects.Dice(config.Game.ASSETS.getResult("six"), 10, 65, false);
+            this._dices[1] = new objects.Dice(config.Game.ASSETS.getResult("six"), 220, 65, false);
+            this._dices[2] = new objects.Dice(config.Game.ASSETS.getResult("six"), 430, 65, false);
             this.Main();
         };
         Play.prototype.Update = function () {
         };
         Play.prototype.Main = function () {
             this.addChild(this._rollButton);
+            this.addChild(this._nextButton);
+            this.addChild(this._dices[0]);
+            this.addChild(this._dices[1]);
+            this.addChild(this._dices[2]);
+            this._rollButton.on("click", this.Roll.bind(this));
+        };
+        Play.prototype.Roll = function () {
+            var outCome = [0, 0, 0];
+            for (var spin = 0; spin < 3; spin++) {
+                outCome[spin] = Math.floor((Math.random() * 6) + 1);
+                this._dices[spin].DisplayResult(outCome[spin]);
+            }
         };
         return Play;
     }(objects.Scene));

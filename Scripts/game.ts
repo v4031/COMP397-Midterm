@@ -20,7 +20,13 @@ let Game = (function(){
         {id:"nextButton", src:"./Assets/images/nextButton.png"},
         {id:"backButton", src:"./Assets/images/backButton.png"},
         {id:"ocean", src:"./Assets/images/ocean.gif"},
-        {id:"plane", src:"./Assets/images/plane.png"}
+        {id:"plane", src:"./Assets/images/plane.png"},
+        {id:"one", src:"./Assets/images/1.png"},
+        {id:"two", src:"./Assets/images/2.png"},
+        {id:"three", src:"./Assets/images/3.png"},
+        {id:"four", src:"./Assets/images/4.png"},
+        {id:"five", src:"./Assets/images/5.png"},
+        {id:"six", src:"./Assets/images/6.png"}
     ];
 
     function Preload():void
@@ -38,6 +44,12 @@ let Game = (function(){
      */
     function Start():void
     {
+        config.Game.DICEIMAGE[0] = new createjs.Bitmap(config.Game.ASSETS.getResult("one"));
+        config.Game.DICEIMAGE[1] = new createjs.Bitmap(config.Game.ASSETS.getResult("two"));
+        config.Game.DICEIMAGE[2] = new createjs.Bitmap(config.Game.ASSETS.getResult("three"));
+        config.Game.DICEIMAGE[3] = new createjs.Bitmap(config.Game.ASSETS.getResult("four"));
+        config.Game.DICEIMAGE[4] = new createjs.Bitmap(config.Game.ASSETS.getResult("five"));
+        config.Game.DICEIMAGE[5] = new createjs.Bitmap(config.Game.ASSETS.getResult("six"));
         console.log(`%c Game Started!`, "color: blue; font-size: 20px; font-weight: bold;");
         stage = new createjs.Stage(canvas);
         createjs.Ticker.framerate = config.Game.FPS;
