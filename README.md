@@ -1,3 +1,5 @@
-# COMP397-W2020-Test-Template-v2
+# COMP397-W2020-Mid-Term
 
-## Test template for COMP397 to be  used with Midterm test
+## Author:Viet Anh Pham
+
+## Date: Feb 22, 2020
