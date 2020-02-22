@@ -11,8 +11,9 @@ module objects
             , x:number = 0, y:number= 0, isCentered:boolean = false)
         {
             super(image, x, y, isCentered);
-
-            this._test = new objects.Label("default", "30px", "Consolas", "#000000", this.x+100,this.y+220,false);
+            this.scaleX = 0.75;
+            this.scaleY = 0.75;
+            this._test = new objects.Label("default", "30px", "Consolas", "#000000", this.x + 75,this.y+180,false);
 
             this.Start();
         }

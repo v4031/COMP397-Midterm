@@ -23,7 +23,9 @@ var objects;
             if (y === void 0) { y = 0; }
             if (isCentered === void 0) { isCentered = false; }
             var _this = _super.call(this, image, x, y, isCentered) || this;
-            _this._test = new objects.Label("default", "30px", "Consolas", "#000000", _this.x + 100, _this.y + 220, false);
+            _this.scaleX = 0.75;
+            _this.scaleY = 0.75;
+            _this._test = new objects.Label("default", "30px", "Consolas", "#000000", _this.x + 75, _this.y + 180, false);
             _this.Start();
             return _this;
         }

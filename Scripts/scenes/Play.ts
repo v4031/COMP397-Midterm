@@ -26,9 +26,8 @@ module scenes
 
             this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 360, true);
             this._nextButton = new objects.Button(config.Game.ASSETS.getResult("nextButton"), 320, 430, true);
-            this._dices[0] = new objects.Dice(config.Game.ASSETS.getResult("six"),10, 65, false);
-            this._dices[1] = new objects.Dice(config.Game.ASSETS.getResult("six"),220, 65, false);
-            this._dices[2] = new objects.Dice(config.Game.ASSETS.getResult("six"),430, 65, false);
+            this._dices[0] = new objects.Dice(config.Game.ASSETS.getResult("six"),60, 100, false);
+            this._dices[1] = new objects.Dice(config.Game.ASSETS.getResult("six"),430, 100, false);
              this.Main();
         }        
         
@@ -43,7 +42,6 @@ module scenes
             this.addChild(this._nextButton);
             this.addChild(this._dices[0]);
             this.addChild(this._dices[1]);
-            this.addChild(this._dices[2]);
             this._rollButton.on("click", this.Roll.bind(this));
             this._nextButton.on("click", ()=>{
                 config.Game.SCENE = scenes.State.BONUS;
@@ -51,10 +49,10 @@ module scenes
         }
 
         public Roll() {
-            let outCome = [0, 0, 0];
-            for (let spin = 0; spin < 3; spin++) {
-                outCome[spin] = Math.floor((Math.random() * 6) + 1);
-                this._dices[spin].DisplayResult(outCome[spin]);
+            let outCome = [0, 0];
+            for (let dice = 0; dice < 2; dice++) {
+                outCome[dice] = Math.floor((Math.random() * 6) + 1);
+                this._dices[dice].DisplayResult(outCome[dice]);
             }
             let rollSound = createjs.Sound.play("roll");
             rollSound.volume = 1;
